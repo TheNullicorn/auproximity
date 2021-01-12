@@ -304,6 +304,7 @@ export default class PublicLobbyBackend extends BackendAdapter {
                 // Store the map's component ID.
                 this.shipStatusNetId = part.components[0].netid;
             }
+            return;
         }
 
         // If an action/event is called on a component...
@@ -368,9 +369,10 @@ export default class PublicLobbyBackend extends BackendAdapter {
         // If the game's settings were updated...
         if (rpcPart.rpcid === RPCID.SyncSettings) {
             // Broadcast the change to our clients.
-            return this.emitSettingsUpdate({
+            this.emitSettingsUpdate({
                 crewmateVision: rpcPart.options.crewVision
             });
+            return;
         }
 
         // If a meeting starts...
@@ -418,6 +420,7 @@ export default class PublicLobbyBackend extends BackendAdapter {
                     transformNetId: -1
                 });
             }
+            return;
         }
 
         // If a player's state was updated directly...
@@ -437,6 +440,7 @@ export default class PublicLobbyBackend extends BackendAdapter {
                     });
                 }
             }
+            return;
         }
 
         // If a player gets teleported...
