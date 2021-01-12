@@ -118,7 +118,7 @@ export class AmongusClient extends EventEmitter {
     _disconnect() {
         this.emit("disconnect");
 
-        this.socket.removeAllListeners();
+        this.socket?.removeAllListeners();
 
         this.socket = null;
         this.ip = null;
